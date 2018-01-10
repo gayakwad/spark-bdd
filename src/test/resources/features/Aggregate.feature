@@ -1,6 +1,3 @@
-# spark-bdd
-
-```
 @distributed
 Feature: Calculate Aggregate
 
@@ -20,4 +17,3 @@ Feature: Calculate Aggregate
       | 02051982   | 1        | 3              |
       | 14051982   | 2        | 7              |
       | 01102012   | 3        | 11             |
-```
