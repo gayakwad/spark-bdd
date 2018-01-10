@@ -1,4 +1,4 @@
-package com.gayakwad.sparkbdd
+package pipeline
 
 import org.apache.spark.sql.DataFrame
 

@@ -1,8 +1,6 @@
 @distributed
 Feature: Calculate Aggregate
-
   Scenario: Aggregate
-
     Given the following sales transactions:
       | date       | itemId   | quantity |
       | 02051982   | 1        | 1        |

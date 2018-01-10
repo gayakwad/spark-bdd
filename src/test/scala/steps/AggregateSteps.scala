@@ -1,6 +1,6 @@
 package steps
 
-import com.gayakwad.sparkbdd.Aggregate._
+import pipeline.Aggregate._
 import com.holdenkarau.spark.testing.DataFrameSuiteBase
 import cucumber.api.DataTable
 import cucumber.api.scala.{EN, ScalaDsl}
@@ -11,13 +11,14 @@ import org.scalatest.FunSuite
 import scala.collection.JavaConversions._
 
 
-class SalesAggregateSteps extends FunSuite with DataFrameSuiteBase with ScalaDsl with EN {
+class AggregateSteps extends FunSuite with DataFrameSuiteBase with ScalaDsl with EN {
   var salesTransactionsDF: DataFrame = _
   var aggregateSalesDF: DataFrame = _
 
   Given("""^the following sales transactions:""") { (salesTransactionDataTable: DataTable) =>
     beforeAll() // explicitly invoking spark context creation
     salesTransactionsDF = convertToSalesTransactionsDF(salesTransactionDataTable)
+    salesTransactionsDF.show()
   }
 
   When("""^I calculate aggregates""") {
@@ -25,8 +26,10 @@ class SalesAggregateSteps extends FunSuite with DataFrameSuiteBase with ScalaDsl
   }
 
   Then("""^the result is:""") { (salesDataTable: DataTable) =>
-    val expectectSales = convertToExpectedAggregateSalesDF(salesDataTable)
-    assertDataFrameEquals(aggregateSalesDF.sort("date"), expectectSales.sort("date"))
+    val expectedSales = convertToExpectedAggregateSalesDF(salesDataTable)
+    expectedSales.show()
+    assertDataFrameEquals(aggregateSalesDF.sort("date"), expectedSales.sort("date"))
+    afterAll()
   }
 
   def convertToSalesTransactionsDF(salesDataTable: DataTable): DataFrame = {
