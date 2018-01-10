@@ -21,6 +21,7 @@ lazy val root = (project in file(".")).
       "com.holdenkarau" %% "spark-testing-base" % "2.2.0_0.7.2" % "test",
       "io.cucumber" %% "cucumber-scala" % "2.0.1" % "test",
       "io.cucumber" % "cucumber-junit" % "2.3.1" % "test",
+      "org.apache.spark" %% "spark-hive"       % "2.0.0" % "test",
       "junit" % "junit" % "4.12" % "test"),
     scalacOptions ++= Seq("-deprecation", "-unchecked"),
     pomIncludeRepository := { x => false },

@@ -5,10 +5,10 @@ import cucumber.api.Scenario
 import cucumber.api.scala.{EN, ScalaDsl}
 import org.junit.Assert._
 
-class PipelineStepDefinitions  extends ScalaDsl with EN{
+class AverageSteps extends ScalaDsl with EN {
   val calc = new Calculator
 
-  When("""^I add (\d+) and (\d+)$"""){ (arg1: Double, arg2: Double) =>
+  When("""^I add (\d+) and (\d+)$""") { (arg1: Double, arg2: Double) =>
     calc push arg1
     calc push arg2
     calc push "+"
@@ -18,7 +18,7 @@ class PipelineStepDefinitions  extends ScalaDsl with EN{
     assertEquals(expected, calc.value, 0.001)
   }
 
-  Before("~@foo"){ scenario : Scenario =>
+  Before("~@foo") { scenario: Scenario =>
     println("Runs before scenarios *not* tagged with @foo")
   }
 }
