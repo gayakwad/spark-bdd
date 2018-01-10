@@ -1,5 +1,5 @@
 # spark-bdd
-
+BDD style tests for spark e.g.
 ```
 @distributed
 Feature: Calculate Aggregate
@@ -21,3 +21,10 @@ Feature: Calculate Aggregate
       | 14051982   | 2        | 7              |
       | 01102012   | 3        | 11             |
 ```
+
+### Pending List
+
+- [ ] Add more scenarios
+- [ ] Reuse spark context
+- [ ] Use enums for column names
+- [ ] add command line to run test
