@@ -14,9 +14,10 @@ import scala.collection.JavaConversions._
 class AggregateSteps extends FunSuite with DataFrameSuiteBase with ScalaDsl with EN {
   var salesTransactionsDF: DataFrame = _
   var aggregateSalesDF: DataFrame = _
+  beforeAll() // calling only once for before all the tests
 
   Given("""^the following sales transactions:""") { (salesTransactionDataTable: DataTable) =>
-    beforeAll() // explicitly invoking spark context creation
+    // explicitly invoking spark context creation
     salesTransactionsDF = convertToSalesTransactionsDF(salesTransactionDataTable)
     salesTransactionsDF.show()
   }
@@ -29,7 +30,6 @@ class AggregateSteps extends FunSuite with DataFrameSuiteBase with ScalaDsl with
     val expectedSales = convertToExpectedAggregateSalesDF(salesDataTable)
     expectedSales.show()
     assertDataFrameEquals(aggregateSalesDF.sort("date"), expectedSales.sort("date"))
-    afterAll()
   }
 
   def convertToSalesTransactionsDF(salesDataTable: DataTable): DataFrame = {

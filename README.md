@@ -24,7 +24,10 @@ Feature: Calculate Aggregate
 
 ### Pending List
 
-- [ ] Add more scenarios
+- [X] Add more scenarios
 - [ ] Reuse spark context
 - [ ] Use enums for column names
 - [ ] add command line to run test
+
+### References
+Only one SparkContext per JVM, but it can be shared across multiple SparkSession - https://stackoverflow.com/questions/40153728/multiple-sparksessions-in-single-jvm
