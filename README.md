@@ -22,10 +22,10 @@ Feature: Calculate Aggregate
       | 01102012   | 3        | 11             |
 ```
 
-### Pending List
+### Backlog
 
 - [X] Add more scenarios
-- [ ] Reuse spark context
+- [X] Reuse spark context
 - [ ] Use enums for column names
 - [ ] add command line to run test
 
